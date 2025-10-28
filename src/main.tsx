@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
-          <Route index element={<App />} />
+          <Route index element={<ContentsList />} />
           <Route path="/contents" element={<ContentsList />} />
           <Route path="/contents/:id" element={<ContentDetail />} />
           <Route path="/subscribers/new" element={<NewSubscriber />} />
