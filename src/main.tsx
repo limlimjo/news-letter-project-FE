@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
-import App from "./pages"; // 메인 페이지 컴포넌트
 import RootLayout from "./pages/layout"; // 레이아웃 컴포넌트
 import ContentsList from "./pages/contents/ContentsList";
 import ContentDetail from "./pages/contents/ContentDetail";
