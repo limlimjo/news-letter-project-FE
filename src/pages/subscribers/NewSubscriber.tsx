@@ -1,3 +1,5 @@
-export default function NewSubscriber() {
+const NewSubscriber = () => {
   return <div>NewSubscriber</div>;
-}
+};
+
+export default NewSubscriber;
