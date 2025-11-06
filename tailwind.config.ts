@@ -10,6 +10,9 @@ const config: Config = {
       colors: {
         "newsletter-light-purple": "#F3EAFF",
       },
+      screens: {
+        xs: "375px",
+      },
     },
   },
   plugins: [],
