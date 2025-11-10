@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import Button from "@/components/ui/Button";
 import CardContent from "@/components/ui/CardContent";
@@ -6,6 +6,40 @@ import CommonInput from "@/components/ui/CommonInput";
 
 const ContentsList = () => {
   const [email, setEmail] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  // 이메일 정규식
+  const validateEmail = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let msg = "";
+    if (!value) {
+      msg = "이메일을 입력해주세요.";
+    } else if (!emailRegex.test(value)) {
+      msg = "올바른 이메일 형태를 입력해주세요.";
+    }
+    return msg;
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrorMsg("");
+
+    // 이메일 유효성 검사
+    const emailError = validateEmail(email);
+    if (emailError) {
+      setErrorMsg(emailError);
+      return;
+    }
+
+    // 개인정보 수집 동의 체크 여부 확인
+    if (!checked) {
+      setErrorMsg("개인정보 및 수집 이용에 동의가 필요해요.");
+      return;
+    }
+
+    // TODO: 구독 여부 확인 (API 호출)
+  };
 
   return (
     <div className="flex flex-col gap-5 xl:mt-6 mt-8 justify-center">
@@ -60,28 +94,33 @@ const ContentsList = () => {
               </p>
             </div>
             <div>
-              <div className="flex gap-3 mb-[38px]">
-                <CommonInput
-                  className="w-full p-3 border border-gray-300 text-gray-500"
-                  value={email}
-                  onChange={setEmail}
-                  placeholder="이메일을 입력해주세요."
-                />
-                <Button className="xl:w-[360px] xl:p-3 xl:bg-gray-200 xl:text-gray-400 xl:border xl:border-gray-300 xl:rounded xl:block hidden">
-                  무료 구독하기
-                </Button>
-              </div>
-              <div className="flex flex-col xl:flex-row xl:gap-2">
-                <div className="flex gap-1 mb-4">
-                  <input type="checkbox" />
-                  <p className="text-gray-700">
-                    <a href="#">개인정보 수집 이용 약관</a> 동의 (필수)
-                  </p>
+              <form onSubmit={handleSubmit}>
+                <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
+                  <CommonInput
+                    className={`w-full p-3 border text-gray-500 ${errorMsg ? "border-red-500" : "border-gray-300"}`}
+                    value={email}
+                    onChange={setEmail}
+                    placeholder="이메일을 입력해주세요."
+                  />
+                  <Button
+                    type="submit"
+                    className="p-3 bg-gray-200 text-gray-400 border border-gray-300 rounded w-full mt-3 xl:w-[360px] xl:mt-0 hover:bg-gray-100 cursor-pointer"
+                  >
+                    무료 구독하기
+                  </Button>
                 </div>
-                <Button className="p-3 bg-gray-200 text-gray-400 border border-gray-300 rounded xl:hidden">
-                  무료 구독하기
-                </Button>
-              </div>
+                {/* 에러 메시지 */}
+                {errorMsg && <p className="text-red-500 text-sm mb-3">{errorMsg}</p>}
+                {/* 체크박스 */}
+                <div className="flex flex-col xl:flex-row xl:gap-2 items-start">
+                  <div className="flex gap-1 mb-4">
+                    <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
+                    <p className="text-gray-700">
+                      <a href="#">개인정보 수집 이용 약관</a> 동의 (필수)
+                    </p>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
