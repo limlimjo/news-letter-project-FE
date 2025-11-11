@@ -42,8 +42,8 @@ const ContentsList = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 xl:mt-6 mt-8 justify-center">
-      <div className="flex flex-col xl:flex-row px-5 xl:px-10">
+    <div className="flex flex-col gap-5 pt-14 justify-center">
+      <div className="flex flex-col xl:flex-row pt-12 px-5 xl:px-10">
         <img
           src="/public/test_image.png"
           alt="이미지"
@@ -83,7 +83,7 @@ const ContentsList = () => {
             </div>
           </div>
         </div>
-        <div className="mt-12 xl:mb-20 mb-28">
+        <div className="mt-12 xl:mb-20 mb-28 xl:px-10">
           <div className="flex flex-col xl:flex-row justify-between bg-purple-100 xl:px-10 xl:py-30 px-5 py-6 rounded-3xl overflow-hidden">
             <div className="flex flex-col gap-3">
               <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">Newsletter 구독하기</p>
