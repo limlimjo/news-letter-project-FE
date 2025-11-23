@@ -134,7 +134,7 @@ const ContentsList = () => {
                       key={idx}
                       onClick={() => setCurrentIndex(idx)}
                       className={`w-3 h-3 rounded-full transition ${
-                        idx === currentIndex ? "bg-purple-500" : "bg-purple-200"
+                        idx === currentIndex ? "bg-primary-500" : "bg-primary-100"
                       }`}
                     ></button>
                   ))}
@@ -166,14 +166,17 @@ const ContentsList = () => {
             </div>
             {/* 버튼 컴포넌트 */}
             <div className="xl:flex xl:justify-center xl:mt-15 xl:mb-5 hidden">
-              <Button onClick={handleShowMore} className="w-[256px] h-[52px] bg-violet-500 text-white border rounded">
+              <Button
+                onClick={handleShowMore}
+                className="w-[121px] h-[52px] bg-primary-500 text-gray-900 font-semibold rounded hover:bg-primary-600"
+              >
                 더 펼쳐보기
               </Button>
             </div>
           </div>
         </div>
         <div className="mt-12 xl:mb-20 mb-28 xl:px-10">
-          <div className="flex flex-col xl:flex-row justify-between bg-purple-100 xl:px-10 xl:py-30 px-5 py-6 rounded-3xl overflow-hidden">
+          <div className="flex flex-col xl:flex-row justify-between bg-primary-50 xl:px-10 xl:py-30 px-5 py-6 rounded-3xl overflow-hidden">
             <div className="flex flex-col gap-3">
               <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
               <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
@@ -186,14 +189,16 @@ const ContentsList = () => {
               <form onSubmit={handleSubmit}>
                 <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
                   <CommonInput
-                    className={`w-full p-3 border text-gray-500 ${errorMsg ? "border-red-500" : "border-gray-300"}`}
+                    className={`xl:w-[316px] p-3 border text-gray-500 ${
+                      errorMsg ? "border-red-500" : "border-gray-300"
+                    }`}
                     value={email}
                     onChange={setEmail}
                     placeholder="이메일을 입력해주세요."
                   />
                   <Button
                     type="submit"
-                    className="p-3 bg-gray-200 text-gray-400 border border-gray-300 rounded w-full mt-3 xl:w-[360px] xl:mt-0 hover:bg-gray-100 cursor-pointer"
+                    className="p-3 bg-primary-500 text-gray-900 font-semibold rounded xl:w-[140px] w-full mt-3 xl:mt-0 hover:bg-primary-600 cursor-pointer"
                   >
                     무료 구독하기
                   </Button>

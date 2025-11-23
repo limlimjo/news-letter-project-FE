@@ -87,7 +87,7 @@ const ContentDetail = () => {
       </div>
       <div className="bg-white">
         <div className="mt-12 xl:mb-20 mb-28">
-          <div className="flex flex-col justify-between bg-purple-100 xl:px-10 xl:py-10 px-5 py-6 rounded-3xl overflow-hidden">
+          <div className="flex flex-col justify-between bg-primary-50 xl:px-10 xl:py-10 px-5 py-6 rounded-3xl overflow-hidden">
             <div className="flex flex-col gap-3">
               <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
               <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
@@ -107,7 +107,7 @@ const ContentDetail = () => {
                   />
                   <Button
                     type="submit"
-                    className="xl:w-[360px] xl:p-3 xl:bg-gray-200 xl:text-gray-400 xl:border xl:border-gray-300 xl:rounded xl:block hidden"
+                    className="xl:w-[360px] xl:p-3 xl:bg-primary-500 xl:text-gray-90 xl:font-semibold xl:rounded xl:block xl:hover:bg-primary-600 hidden"
                   >
                     무료 구독하기
                   </Button>
@@ -122,7 +122,7 @@ const ContentDetail = () => {
                       <a href="#">개인정보 수집 이용 약관</a> 동의 (필수)
                     </p>
                   </div>
-                  <Button className="p-3 bg-gray-200 text-gray-400 border border-gray-300 rounded xl:hidden">
+                  <Button className="p-3 bg-primary-500 text-gray-900 font-semibold rounded hover:bg-primary-600 xl:hidden">
                     무료 구독하기
                   </Button>
                 </div>
