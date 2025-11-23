@@ -175,7 +175,7 @@ const ContentsList = () => {
         <div className="mt-12 xl:mb-20 mb-28 xl:px-10">
           <div className="flex flex-col xl:flex-row justify-between bg-purple-100 xl:px-10 xl:py-30 px-5 py-6 rounded-3xl overflow-hidden">
             <div className="flex flex-col gap-3">
-              <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">Newsletter 구독하기</p>
+              <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
               <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
                 매주 금요일, 무료 IT 인사이트를 받아보세요.
                 <br />
