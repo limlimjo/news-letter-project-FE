@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import RootLayout from "./pages/layout"; // 레이아웃 컴포넌트
 import ContentsList from "./pages/contents/ContentsList";
 import ContentDetail from "./pages/contents/ContentDetail";
-import NewSubscriber from "./components/ui/NewSubscriber";
 
 // 개발 환경에서만 msw 시작
 if (process.env.NODE_ENV === "development") {
@@ -21,7 +20,6 @@ createRoot(document.getElementById("root")!).render(
           <Route index element={<ContentsList />} />
           <Route path="/contents" element={<ContentsList />} />
           <Route path="/contents/:id" element={<ContentDetail />} />
-          <Route path="/subscribers/new" element={<NewSubscriber />} />
         </Route>
       </Routes>
     </BrowserRouter>
