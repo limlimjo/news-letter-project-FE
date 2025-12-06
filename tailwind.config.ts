@@ -15,6 +15,9 @@ const config: Config = {
         "primary-500": "#74FD62",
         "primary-600": "#6AE659",
         "primary-700": "#52B446",
+        "header": "rgba(28, 28, 28, 0.7)",
+        "main-content": "linear-gradient(180deg,#000000 5%,#1C1C1C 100%)",
+        "content": "rgba(241,255,239,0.05)"
       },
       screens: {
         xs: "375px",

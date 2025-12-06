@@ -91,9 +91,9 @@ const ContentDetail = () => {
             <div className="flex flex-col gap-3">
               <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
               <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
-                매주 금요일, 무료 IT 인사이트를 받아보세요.
+                HOPPING, 프로덕트의 흐름을 읽는 가장 가벼운 방법
                 <br />
-                주간 뉴스레터, 최신 기술 트렌드와 인사이트를 제공합니다.
+                매주 금요일, 받은편지함으로 찾아갑니다.
               </p>
             </div>
             <div>

@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 
 import Button from "@/components/ui/Button";
 import CardContent from "@/components/ui/CardContent";
-import CommonInput from "@/components/ui/CommonInput";
+import NewSubscriber from "../../components/ui/NewSubscriber";
 
 type RandomContent = {
   id: number;
@@ -111,8 +111,8 @@ const ContentsList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pt-14 justify-center">
-      <div className="flex flex-col xl:flex-row pt-12 px-5 xl:px-10">
+    <div className="flex flex-col xl:gap-5 gap-25 pt-14 justify-center">
+      <div className="flex flex-col xl:flex-row xl:gap-15 pt-12 px-5 xl:px-10">
         {randomContentData.length > 0 && (
           <>
             <img
@@ -140,11 +140,17 @@ const ContentsList = () => {
                   ))}
                 </div>
                 {/* 좌우 화살표 */}
-                <div className="hidden xl:flex gap-6 text-xl text-gray-600">
-                  <button onClick={prev} className="hover:text-black">
+                <div className="hidden xl:flex gap-4 text-xl text-gray-600">
+                  <button 
+                    onClick={prev} 
+                    className="w-10 h-10 flex items-center justify-center border border-gray-400 text-gray-300 rounded-full bg-gray-800 transition"
+                  >
                     &lt;
                   </button>
-                  <button onClick={next} className="hover:text-black">
+                  <button 
+                    onClick={next} 
+                    className="w-10 h-10 flex items-center justify-center border border-gray-400 text-gray-300 rounded-full bg-gray-800 transition"
+                  >
                     &gt;
                   </button>
                 </div>
@@ -154,12 +160,12 @@ const ContentsList = () => {
         )}
       </div>
 
-      <div className="bg-white px-4">
-        <div>
+      <div className="bg-gray-900 px-4 xl:px-0">
+        <div className="text-white">
           <div className="mt-12 xl:px-10">
             <p className="font-bold text-[24px] mb-5">최근 게시된 뉴스레터</p>
             {/* 카드 컴포넌트 */}
-            <div className="grid gird-cols-1 xl:grid-cols-4 xl:gap-5 gap-2.5">
+            <div className="grid gird-cols-1 xl:grid-cols-4 xl:gap-5 gap-6">
               {contentData.map((item, index) => (
                 <CardContent key={index} title={item.title} createdAt={item.createdAt} imgUrl={item.imgUrl} />
               ))}
@@ -175,48 +181,16 @@ const ContentsList = () => {
             </div>
           </div>
         </div>
-        <div className="mt-12 xl:mb-20 mb-28 xl:px-10">
-          <div className="flex flex-col xl:flex-row justify-between bg-primary-50 xl:px-10 xl:py-30 px-5 py-6 rounded-3xl overflow-hidden">
-            <div className="flex flex-col gap-3">
-              <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
-              <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
-                매주 금요일, 무료 IT 인사이트를 받아보세요.
-                <br />
-                주간 뉴스레터, 최신 기술 트렌드와 인사이트를 제공합니다.
-              </p>
-            </div>
-            <div>
-              <form onSubmit={handleSubmit}>
-                <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
-                  <CommonInput
-                    className={`xl:w-[316px] p-3 border text-gray-500 ${
-                      errorMsg ? "border-red-500" : "border-gray-300"
-                    }`}
-                    value={email}
-                    onChange={setEmail}
-                    placeholder="이메일을 입력해주세요."
-                  />
-                  <Button
-                    type="submit"
-                    className="p-3 bg-primary-500 text-gray-900 font-semibold rounded xl:w-[140px] w-full mt-3 xl:mt-0 hover:bg-primary-600 cursor-pointer"
-                  >
-                    무료 구독하기
-                  </Button>
-                </div>
-                {/* 에러 메시지 */}
-                {errorMsg && <p className="text-red-500 text-sm mb-3">{errorMsg}</p>}
-                {/* 체크박스 */}
-                <div className="flex flex-col xl:flex-row xl:gap-2 items-start">
-                  <div className="flex gap-1 mb-4">
-                    <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
-                    <p className="text-gray-700">
-                      <a href="#">개인정보 수집 이용 약관</a> 동의 (필수)
-                    </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+        <div className="mt-12 xl:mb-0 mb-28">
+          {/* 구독하기 컴포넌트 */}
+          <NewSubscriber
+            email={email}
+            setEmail={setEmail}
+            checked={checked}
+            setChecked={setChecked}
+            errorMsg={errorMsg}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </div>
     </div>

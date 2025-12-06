@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import RootLayout from "./pages/layout"; // 레이아웃 컴포넌트
 import ContentsList from "./pages/contents/ContentsList";
 import ContentDetail from "./pages/contents/ContentDetail";
-import NewSubscriber from "./pages/subscribers/NewSubscriber";
+import NewSubscriber from "./components/ui/NewSubscriber";
 
 // 개발 환경에서만 msw 시작
 if (process.env.NODE_ENV === "development") {
