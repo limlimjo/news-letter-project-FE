@@ -7,23 +7,32 @@ import ContentsList from "./pages/contents/ContentsList";
 import ContentDetail from "./pages/contents/ContentDetail";
 import Intro from "./pages/intro/Intro";
 
-// 개발 환경에서만 msw 시작
-if (process.env.NODE_ENV === "development") {
+// msw 시작
+async function initMocks() {
   const { worker } = await import("./mocks/browser");
-  await worker.start();
+  await worker.start({
+    serviceWorker: { url: "/mockServiceWorker.js" },
+  });
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/intro" element={<Intro />} />
-        <Route element={<RootLayout />}>
-          <Route index element={<ContentsList />} />
-          <Route path="/contents" element={<ContentsList />} />
-          <Route path="/contents/:id" element={<ContentDetail />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>
-);
+async function init() {
+  if (import.meta.env.MODE === "development" || import.meta.env.VITE_USE_MOCK === "true") {
+    await initMocks();
+  }
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/intro" element={<Intro />} />
+          <Route element={<RootLayout />}>
+            <Route index element={<ContentsList />} />
+            <Route path="/contents" element={<ContentsList />} />
+            <Route path="/contents/:id" element={<ContentDetail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </StrictMode>
+  );
+}
+
+init();
