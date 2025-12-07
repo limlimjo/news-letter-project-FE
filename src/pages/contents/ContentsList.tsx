@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "@/components/ui/Button";
 import CardContent from "@/components/ui/CardContent";
@@ -78,7 +78,7 @@ const ContentsList = () => {
   };
 
   // 무료 구독하기 버튼 클릭할 때
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setErrorMsg("");
 

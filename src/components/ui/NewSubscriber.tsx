@@ -7,7 +7,7 @@ interface NewSubscriberProps {
   checked: boolean;
   setChecked: (value: boolean) => void;
   errorMsg: string;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const NewSubscriber = ({
@@ -30,7 +30,6 @@ const NewSubscriber = ({
         </p>
       </div>
       <div>
-        <form onSubmit={handleSubmit}>
           <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
             <CommonInput
               className={`xl:w-[316px] p-3 border text-gray-500 ${
@@ -41,8 +40,9 @@ const NewSubscriber = ({
               placeholder="이메일을 입력해주세요."
             />
             <Button
-              type="submit"
+              type="button"
               className="p-3 bg-primary-500 text-gray-900 font-semibold rounded xl:w-[140px] w-full mt-3 xl:mt-0 hover:bg-primary-600 cursor-pointer"
+              onClick={handleSubmit}
             >
               무료 구독하기
             </Button>
@@ -54,11 +54,10 @@ const NewSubscriber = ({
             <div className="flex gap-1 mb-4">
               <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
               <p className="text-gray-700">
-                <a href="#">개인정보 수집 이용 약관</a> 동의 (필수)
+                <a className="underline" href="#">개인정보 수집 이용 약관</a> 동의 (필수)
               </p>
             </div>
           </div>
-        </form>
       </div>
     </div>
   );
