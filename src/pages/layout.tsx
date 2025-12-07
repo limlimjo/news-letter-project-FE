@@ -5,8 +5,8 @@ import { Outlet } from "react-router";
 export default function RootLayout() {
   return (
     <>
-      <div className="xl:mx-auto bg-stone-100">
-        <div className="xl:flex xl:min-h-screen">
+      <div className="bg-stone-100 xl:bg-white">
+        <div className="xl:max-w-[1280px] xl:mx-auto xl:min-h-screen xl:bg-stone-100">
           <div className="flex-1 flex flex-col">
             <Header />
             <Outlet />
