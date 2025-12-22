@@ -49,16 +49,6 @@ const ContentsList = () => {
     }
   };
 
-  // 좌우 화살표 (이전 버튼 클릭할 때)
-  const prev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? randomContentData.length - 1 : prevIndex - 1));
-  };
-
-  // 좌우 화살표 (다음 버튼 클릭할 때)
-  const next = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === randomContentData.length - 1 ? 0 : prevIndex + 1));
-  };
-
   // 이메일 정규식
   const validateEmail = (value: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -70,6 +60,12 @@ const ContentsList = () => {
     }
     return msg;
   };
+
+  // 자세히 보기 버튼 클릭할 때
+  const handleDetailShow = () => {
+    console.log("자세히 보기 버튼 클릭할 때");
+    // TODO: API 호출
+  }
 
   // 더 펼쳐보기 버튼 클릭할 때
   const handleShowMore = () => {
@@ -95,7 +91,33 @@ const ContentsList = () => {
       return;
     }
 
-    // TODO: 구독 여부 확인 (API 호출)
+    // 구독하기 API 호출
+    try {
+      // TODO: `${SERVER_URL}/api/v1/subscribe`로 수정 필요
+      const res = await fetch('api/api/v1/subscribe', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setEmail("");
+        setChecked(false);
+        setErrorMsg(data.message);
+        return;
+      }
+      setEmail("");
+      setChecked(false);
+      setErrorMsg("");
+      alert(data.message);
+
+    } catch (err) {
+      console.error("구독 요청 실패: ", err);
+      setErrorMsg("구독 중 문제가 발생했어요. 다시 시도해주세요.");
+      return;
+    }
   };
 
   useEffect(() => {
@@ -111,8 +133,8 @@ const ContentsList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col xl:gap-5 gap-25 pt-14 justify-center">
-      <div className="flex flex-col xl:flex-row xl:gap-15 pt-12 px-5 xl:px-10">
+    <div className="flex flex-col xl:gap-5 gap-25 justify-center">
+      <div className="flex flex-col xl:flex-row xl:gap-8 pt-12 px-5 xl:px-10">
         {randomContentData.length > 0 && (
           <>
             <img
@@ -120,39 +142,33 @@ const ContentsList = () => {
               alt="이미지"
               className="xl:w-[520px] xl:h-[320px] w-[320px] h-[251px] rounded-2xl overflow-hidden mb-5"
             />
-            <div className="flex flex-col gap-3 xl:p-10 w-[320px] xl:w-[512px]">
+            <div className="flex flex-col gap-3 w-[320px] xl:w-[512px] xl:h-[320px]">
+              <p className="text-gray-500">{randomContentData[currentIndex].createdAt}</p>
               <p className="font-bold text-gray-900 text-[28px] line-clamp-2">
                 {randomContentData[currentIndex].title}
               </p>
-              <p className="text-gray-700 text-[20px] line-clamp-3">{randomContentData[currentIndex].content}</p>
-              <p className="text-gray-500">{randomContentData[currentIndex].createdAt}</p>
-              <div className="flex justify-center items-center gap-68 mt-auto">
+              <p className="text-gray-700 text-[15px] line-clamp-3">{randomContentData[currentIndex].content}</p>
+              <div className="mt-auto">
+                {/* 자세히 보기 버튼 */}
+                <div className="xl:flex xl:mt-4 xl:mb-5 hidden">
+                  <Button
+                    onClick={handleDetailShow}
+                    className="w-[96px] h-[40px] bg-primary-500 text-gray-900 text-[14px] font-semibold rounded hover:bg-primary-600"
+                  >
+                    자세히 보기
+                  </Button>
+                </div>
                 {/* 동그라미 버튼 */}
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   {randomContentData.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentIndex(idx)}
-                      className={`w-3 h-3 rounded-full transition ${
-                        idx === currentIndex ? "bg-primary-500" : "bg-primary-100"
+                      className={`w-2.5 h-2.5 rounded-full transition ${
+                        idx === currentIndex ? "bg-primary-600" : "bg-gray-200"
                       }`}
                     ></button>
                   ))}
-                </div>
-                {/* 좌우 화살표 */}
-                <div className="hidden xl:flex gap-4 text-xl text-gray-600">
-                  <button 
-                    onClick={prev} 
-                    className="w-10 h-10 flex items-center justify-center border border-gray-400 text-gray-300 rounded-full bg-gray-800 transition"
-                  >
-                    &lt;
-                  </button>
-                  <button 
-                    onClick={next} 
-                    className="w-10 h-10 flex items-center justify-center border border-gray-400 text-gray-300 rounded-full bg-gray-800 transition"
-                  >
-                    &gt;
-                  </button>
                 </div>
               </div>
             </div>
@@ -160,9 +176,9 @@ const ContentsList = () => {
         )}
       </div>
 
-      <div className="bg-gray-900 px-4 xl:px-0">
-        <div className="text-white">
-          <div className="mt-12 xl:px-10">
+      <div className="px-4 xl:px-0">
+        <div>
+          <div className="mt-6 xl:px-10">
             <p className="font-bold text-[24px] mb-5">최근 게시된 뉴스레터</p>
             {/* 카드 컴포넌트 */}
             <div className="grid gird-cols-1 xl:grid-cols-4 xl:gap-5 gap-6">
@@ -181,7 +197,7 @@ const ContentsList = () => {
             </div>
           </div>
         </div>
-        <div className="mt-12 xl:mb-0 mb-28">
+        <div className="mt-25 xl:mb-0 mb-28">
           {/* 구독하기 컴포넌트 */}
           <NewSubscriber
             email={email}

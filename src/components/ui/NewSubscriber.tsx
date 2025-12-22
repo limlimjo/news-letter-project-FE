@@ -20,16 +20,16 @@ const NewSubscriber = ({
 }: NewSubscriberProps
 ) => {
   return (
-    <div className="flex flex-col xl:flex-row justify-between xl:bg-gray-200 bg-primary-50 xl:px-20 xl:py-20 px-5 py-6 xl:rounded-none rounded-3xl overflow-hidden">
-      <div className="flex flex-col gap-3">
+    <div className="flex flex-col xl:flex-row justify-between xl:bg-gray-50 bg-primary-50 xl:px-20 xl:py-20 px-5 py-6 xl:rounded-none rounded-3xl overflow-hidden">
+      <div className="flex flex-col gap-3 xl:justify-center">
         <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
-        <p className="text-gray-500 xl:text-[20px] text-[15px] mb-6">
+        <p className="text-gray-700 xl:text-[20px] text-[15px] mb-6">
           HOPPING, 프로덕트의 흐름을 읽는 가장 가벼운 방법
           <br />
           매주 금요일, 받은편지함으로 찾아갑니다.
         </p>
       </div>
-      <div>
+      <div className="xl:bg-white xl:p-10 xl:rounded-2xl xl:shadow-sm">
           <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
             <CommonInput
               className={`xl:w-[316px] p-3 border text-gray-500 ${
