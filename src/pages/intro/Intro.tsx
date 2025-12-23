@@ -47,42 +47,41 @@ const Intro = () => {
     }
 
     // 구독하기 API 호출
-    try {
-      // TODO: `${SERVER_URL}/api/v1/subscribe`로 수정 필요
-      const res = await fetch('api/api/v1/subscribe', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+    // try {
+    //   // TODO: `${SERVER_URL}/api/v1/subscribe`로 수정 필요
+    //   const res = await fetch('api/api/v1/subscribe', {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ email }),
+    //   });
 
-      const data = await res.json();
+    //   const data = await res.json();
 
-      if (!res.ok) {
-        setEmail("");
-        setChecked(false);
-        setErrorMsg(data.message);
-        return;
-      }
-      setEmail("");
-      setChecked(false);
-      setErrorMsg("");
-      alert(data.message);
+    //   if (!res.ok) {
+    //     setEmail("");
+    //     setChecked(false);
+    //     setErrorMsg(data.message);
+    //     return;
+    //   }
+    //   setEmail("");
+    //   setChecked(false);
+    //   setErrorMsg("");
+    //   alert(data.message);
 
-    } catch (err) {
-      console.error("구독 요청 실패: ", err);
-      setErrorMsg("구독 중 문제가 발생했어요. 다시 시도해주세요.");
-      return;
-    }
+    // } catch (err) {
+    //   console.error("구독 요청 실패: ", err);
+    //   setErrorMsg("구독 중 문제가 발생했어요. 다시 시도해주세요.");
+    //   return;
+    // }
   };
 
   return (
     <div className="w-full max-w-[1280px] xl:mx-auto bg-white">
         <div className="flex flex-col justify-center items-center bg-gray-100 bg-gradient-to-b">
-            <div className="mt-20 px-4 py-1.5 bg-black rounded-4xl text-primary-500">매주 금요일, 새로운 시선</div>
+            <div className="mt-20 px-4 py-1.5 bg-gray-800 rounded-4xl text-white">매주 금요일, 새로운 시선</div>
             <div className="mt-10 flex flex-col items-center gap-2 text-5xl font-bold">
                 <p>트렌드가 아닌,</p>
-                <p>프로덕트의 이유를</p>
-                <p>전합니다.</p>
+                <p>프로덕트의 이유를 전합니다.</p>
             </div>
             <div className="mt-6 flex flex-col items-center gap-3 text-[20px]">
                 <p>HOPPING은 국내 IT 씬의 새로운 실험과 전략을 이야기처럼 풀어드려요.</p>
@@ -261,7 +260,6 @@ const Intro = () => {
             <p className="text-center text-slate-500">매주 금요일 아침, 받은편지함으로 찾아갑니다 ✉️</p>
           </div>
         </div>
-        <Footer />
     </div>
   )
 }

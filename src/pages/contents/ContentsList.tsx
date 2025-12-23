@@ -92,32 +92,32 @@ const ContentsList = () => {
     }
 
     // 구독하기 API 호출
-    try {
-      // TODO: `${SERVER_URL}/api/v1/subscribe`로 수정 필요
-      const res = await fetch('api/api/v1/subscribe', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+    // try {
+    //   // TODO: `${SERVER_URL}/api/v1/subscribe`로 수정 필요
+    //   const res = await fetch('api/api/v1/subscribe', {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ email }),
+    //   });
 
-      const data = await res.json();
+    //   const data = await res.json();
 
-      if (!res.ok) {
-        setEmail("");
-        setChecked(false);
-        setErrorMsg(data.message);
-        return;
-      }
-      setEmail("");
-      setChecked(false);
-      setErrorMsg("");
-      alert(data.message);
+    //   if (!res.ok) {
+    //     setEmail("");
+    //     setChecked(false);
+    //     setErrorMsg(data.message);
+    //     return;
+    //   }
+    //   setEmail("");
+    //   setChecked(false);
+    //   setErrorMsg("");
+    //   alert(data.message);
 
-    } catch (err) {
-      console.error("구독 요청 실패: ", err);
-      setErrorMsg("구독 중 문제가 발생했어요. 다시 시도해주세요.");
-      return;
-    }
+    // } catch (err) {
+    //   console.error("구독 요청 실패: ", err);
+    //   setErrorMsg("구독 중 문제가 발생했어요. 다시 시도해주세요.");
+    //   return;
+    // }
   };
 
   useEffect(() => {

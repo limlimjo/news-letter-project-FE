@@ -23,8 +23,8 @@ async function init() {
     <StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path="/intro" element={<Intro />} />
           <Route element={<RootLayout />}>
+            <Route path="/intro" element={<Intro />} />
             <Route index element={<ContentsList />} />
             <Route path="/contents" element={<ContentsList />} />
             <Route path="/contents/:id" element={<ContentDetail />} />
