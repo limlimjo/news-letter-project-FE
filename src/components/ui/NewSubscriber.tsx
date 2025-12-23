@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import CommonInput from "@/components/ui/CommonInput";
+import bgImage from "@/assets/image/subscribe.png";
 
 interface NewSubscriberProps {
   email: string;
@@ -20,7 +21,10 @@ const NewSubscriber = ({
 }: NewSubscriberProps
 ) => {
   return (
-    <div className="flex flex-col xl:flex-row justify-between xl:bg-gray-50 bg-primary-50 xl:px-20 xl:py-20 px-5 py-6 xl:rounded-none rounded-3xl overflow-hidden">
+    <div
+      id="newSubscribe"
+      style={{ backgroundImage: `url(${bgImage})` }} 
+      className="flex flex-col xl:flex-row justify-between bg-cover bg-center bg-no-repeat xl:bg-gray-50 bg-primary-50 xl:px-20 xl:py-20 px-5 py-6 xl:rounded-none rounded-3xl overflow-hidden">
       <div className="flex flex-col gap-3 xl:justify-center">
         <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
         <p className="text-gray-700 xl:text-[20px] text-[15px] mb-6">
