@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Button from "@/components/ui/Button";
 import mail from "@/assets/icons/mail.svg";
 import bang from "@/assets/icons/bang.svg";
