@@ -24,7 +24,7 @@ const NewSubscriber = ({
     <div
       id="newSubscribe"
       style={{ backgroundImage: `url(${bgImage})` }} 
-      className="flex flex-col xl:flex-row justify-between bg-cover bg-center bg-no-repeat xl:bg-gray-50 bg-primary-50 xl:px-20 xl:py-20 px-5 py-6 xl:rounded-none rounded-3xl overflow-hidden">
+      className="flex flex-col md:flex-row xl:flex-row justify-between md:items-center xl:justify-between bg-cover bg-center bg-no-repeat xl:bg-gray-50 bg-primary-50 px-5 xl:px-20 py-30 md:py-20 xl:py-20">
       <div className="flex flex-col gap-3 xl:justify-center">
         <p className="font-bold xl:text-[32px] text-[24px] text-gray-900">호핑 뉴스레터 구독하기</p>
         <p className="text-gray-700 xl:text-[20px] text-[15px] mb-6">
@@ -33,10 +33,10 @@ const NewSubscriber = ({
           매주 금요일, 받은편지함으로 찾아갑니다.
         </p>
       </div>
-      <div className="xl:bg-white xl:p-10 xl:rounded-2xl xl:shadow-sm">
-          <div className="flex flex-col xl:flex-row xl:gap-3 mb-3">
+      <div className="bg-white p-6 xl:p-10 rounded-2xl shadow-sm">
+          <div className="flex flex-col md:flex-row xl:flex-row md:gap-3 xl:gap-3 mb-3">
             <CommonInput
-              className={`xl:w-[316px] p-3 border text-gray-500 ${
+              className={`md:w-[287px] xl:w-[316px] p-3 border text-gray-500 ${
                 errorMsg ? "border-red-500" : "border-gray-300"
               }`}
               value={email}
@@ -45,7 +45,7 @@ const NewSubscriber = ({
             />
             <Button
               type="button"
-              className="p-3 bg-primary-500 text-gray-900 font-semibold rounded xl:w-[140px] w-full mt-3 xl:mt-0 hover:bg-primary-600 cursor-pointer"
+              className="p-3 bg-primary-500 text-gray-900 font-semibold rounded md:w-[153px] xl:w-[140px] w-full mt-3 md:mt-0 xl:mt-0 hover:bg-primary-600 cursor-pointer"
               onClick={handleSubmit}
             >
               무료 구독하기

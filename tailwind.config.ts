@@ -20,7 +20,9 @@ const config: Config = {
         "content": "rgba(241,255,239,0.05)"
       },
       screens: {
-        xs: "375px",
+        xs: { max: "375px" },   // mobile
+        md: "376px",            // tablet 이상
+        xl: "961px",            // pc
       },
     },
   },

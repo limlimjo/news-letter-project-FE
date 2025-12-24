@@ -133,16 +133,16 @@ const ContentsList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col xl:gap-5 gap-25 justify-center">
+    <div className="flex flex-col xl:gap-5 justify-center">
       <div className="flex flex-col xl:flex-row xl:gap-8 pt-12 px-5 xl:px-10">
         {randomContentData.length > 0 && (
           <>
             <img
               src={randomContentData[currentIndex].imgUrl}
               alt="이미지"
-              className="xl:w-[520px] xl:h-[320px] w-[320px] h-[251px] rounded-2xl overflow-hidden mb-5"
+              className="xl:w-[520px] xl:h-[320px] md:w-[920px] md:h-[613px] w-[335px] h-[223px] rounded-2xl overflow-hidden mb-5"
             />
-            <div className="flex flex-col gap-3 w-[320px] xl:w-[512px] xl:h-[320px]">
+            <div className="flex flex-col gap-3 xl:w-[512px] h-[223px] xl:h-[320px]">
               <p className="text-gray-500">{randomContentData[currentIndex].createdAt}</p>
               <p className="font-bold text-gray-900 text-[28px] line-clamp-2">
                 {randomContentData[currentIndex].title}
@@ -159,7 +159,7 @@ const ContentsList = () => {
                   </Button>
                 </div>
                 {/* 동그라미 버튼 */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 justify-center xl:justify-start">
                   {randomContentData.map((_, idx) => (
                     <button
                       key={idx}
@@ -176,18 +176,18 @@ const ContentsList = () => {
         )}
       </div>
 
-      <div className="px-4 xl:px-0">
+      <div>
         <div>
-          <div className="mt-6 xl:px-10">
+          <div className="mt-16 px-5 xl:px-10">
             <p className="font-bold text-[24px] mb-5">최근 게시된 뉴스레터</p>
             {/* 카드 컴포넌트 */}
-            <div className="grid gird-cols-1 xl:grid-cols-4 xl:gap-5 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-6 xl:grid-cols-4 xl:gap-5">
               {contentData.map((item, index) => (
                 <CardContent key={index} title={item.title} createdAt={item.createdAt} imgUrl={item.imgUrl} />
               ))}
             </div>
             {/* 버튼 컴포넌트 */}
-            <div className="xl:flex xl:justify-center xl:mt-15 xl:mb-5 hidden">
+            <div className="flex justify-center mt-15 xl:mb-5">
               <Button
                 onClick={handleShowMore}
                 className="w-[121px] h-[52px] bg-primary-500 text-gray-900 font-semibold rounded hover:bg-primary-600"
@@ -197,7 +197,7 @@ const ContentsList = () => {
             </div>
           </div>
         </div>
-        <div className="mt-25 xl:mb-0 mb-28">
+        <div className="mt-25">
           {/* 구독하기 컴포넌트 */}
           <NewSubscriber
             email={email}
